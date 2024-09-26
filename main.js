@@ -21,10 +21,9 @@ for (let i = 0; i < emojis.length; i++) {
                     boxes[1].classList.add("boxMatch");
                     boxes[1].classList.remove("boxOpen");
                     boxes[0].classList.remove("boxOpen");
-
                     if (boxes.length == emojis.length) {
-                        location.reload();
-                        console.log(time);
+                        gameBox.innerHTML = "hai vinto!"
+                        window.location.reload();
                     }
                 } else {
                     boxes[1].classList.remove("boxOpen");
@@ -32,6 +31,7 @@ for (let i = 0; i < emojis.length; i++) {
                 }
             }
         }, 500);
+
     }
 
     box.innerHTML = shuffleEmojis[i];
@@ -47,11 +47,11 @@ intervalId = '';
 function startTimer() {
     intervalId = setInterval(() => {
         sec++;
-        let time = timer.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+        time = timer.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
         if (sec === 60) {
             min++;
             sec = 0;
-            let time = timer.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`
+            time = timer.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`
         }
 
     }, 1000);
