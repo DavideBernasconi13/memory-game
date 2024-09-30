@@ -6,6 +6,9 @@ const emojis = ["😀", "😀", "😁", "😁", "😛", "😛", "😎", "😎", 
 
 let shuffleEmojis = emojis.sort(() => (Math.random() > .5) ? 2 : -1);
 
+let point = [];
+let singlePoint = 0;
+
 
 for (let i = 0; i < emojis.length; i++) {
     let box = document.createElement("div");
@@ -18,12 +21,14 @@ for (let i = 0; i < emojis.length; i++) {
             if (boxes.length > 1) {
                 if (boxes[0].innerHTML == boxes[1].innerHTML) {
                     boxes[0].classList.add("boxMatch");
+                    point.push(singlePoint++);
                     boxes[1].classList.add("boxMatch");
+                    point.push(singlePoint++);
                     boxes[1].classList.remove("boxOpen");
                     boxes[0].classList.remove("boxOpen");
-                    if (boxes.length == emojis.length) {
+                    if (point.length == emojis.length) {
                         gameBox.innerHTML = "hai vinto!"
-                        window.location.reload();
+
                     }
                 } else {
                     boxes[1].classList.remove("boxOpen");
